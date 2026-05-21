@@ -94,7 +94,7 @@ export const SKILL_CATEGORIES = [
     ],
   },
   {
-    name: "Web & Tools",
+    name: "Code & Tooling",
     icon: "Code",
     skills: [
       "Python",
@@ -112,6 +112,27 @@ export const SKILL_CATEGORIES = [
 ];
 
 export const PROJECTS = [
+  {
+    title: "GPU-Accelerated ML Pipeline",
+    description:
+      "Performed accelerated EDA and feature engineering using cuDF, achieving 15–40x speedups over pandas. Trained models using cuML for 15x faster execution, maintaining a GPU-native pipeline that eliminated costly CPU↔GPU memory transfers.",
+    tags: ["Python", "RAPIDS cuDF", "cuML", "NVIDIA CUDA"],
+    category: "ML",
+  },
+  {
+    title: "Chest X-Ray Pneumonia Detection",
+    description:
+      "Built a binary classification model using a ResNet-based CNN fine-tuned via transfer learning. Preprocessed 5,000+ X-ray images and implemented a full PyTorch pipeline covering custom DataLoaders, model training, and inference.",
+    tags: ["PyTorch", "CNN", "Transfer Learning"],
+    category: "Computer Vision",
+  },
+  {
+    title: "Humanoid Vision Robot",
+    description:
+      "Designed and 3D-printed a Chappie-inspired robot face powered by a Raspberry Pi. Integrated a Vision LLM via Groq Cloud API to process live camera frames for real-time contextual understanding and controlled motor movements.",
+    tags: ["Raspberry Pi", "Vision LLM", "Robotics", "3D Printing"],
+    category: "GenAI",
+  },
   {
     title: "Ticket Price Prediction",
     description:
@@ -166,7 +187,7 @@ export const ACHIEVEMENTS = [
     icon: "Globe",
   },
   {
-    title: "4th Place — Google Hackathon at ISB Hyderabad",
+    title: "4th Place — Google Hackathon at ISB Hyderabad Organized by T-HUB",
     icon: "Award",
   },
   {
@@ -186,13 +207,12 @@ export const NAV_LINKS = [
 export const EXPERIENCE = {
   company: "Knackhook",
   role: "AI/ML Engineer",
-  period: "June 2025 – Present",
+  period: "June 2024 – April 2025",
   highlights: [
-    "Production AI systems: NLP pipelines, computer vision, Azure cloud deployments",
+    "Production AI systems: Gradient boosting algorithms like LightGBM, Bayesian statistics, and other ML algorithms , Azure and AWS cloud deployments",
     "End-to-end ML data pipeline for ticket price prediction (AWS S3 + Athena)",
     "Semantic code search system using Nomic embeddings + Qdrant vector DB",
     "Akamai anti-bot bypass scraper deployed on Apify at production scale",
-    "Hallucination detection research using BERT-based stochastic checkers",
     "Contributed to KnackCampaigner, KnackHire, and KnackOutreach products",
   ],
 };
