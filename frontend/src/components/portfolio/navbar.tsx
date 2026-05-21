@@ -8,6 +8,7 @@ import { gsap } from "gsap";
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isBannerVisible, setIsBannerVisible] = useState(true);
   const navRef = useRef<HTMLElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
@@ -56,16 +57,39 @@ export function Navbar() {
     el?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const showBanner = isBannerVisible && !scrolled;
+
   return (
-    <nav
-      ref={navRef}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[#0a0f1a]/80 backdrop-blur-xl border-b border-white/5 shadow-lg shadow-black/20"
-          : "bg-transparent"
-      }`}
-      style={{ opacity: 0 }}
-    >
+    <>
+      {/* Premium Under Development Banner */}
+      {showBanner && (
+        <div className="bg-gradient-to-r from-amber-500/10 via-amber-500/20 to-amber-500/10 border-b border-amber-500/20 text-amber-500 text-xs sm:text-sm font-medium py-1.5 px-4 text-center flex items-center justify-center gap-2 backdrop-blur-md fixed top-0 left-0 right-0 z-[60] transition-opacity duration-300">
+          <span className="flex h-1.5 w-1.5 sm:h-2 sm:w-2 relative">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-amber-500"></span>
+          </span>
+          <span>This website is currently under development.</span>
+          <button
+            onClick={() => setIsBannerVisible(false)}
+            className="absolute right-4 p-1 hover:bg-amber-500/20 rounded-full transition-colors"
+            aria-label="Close banner"
+          >
+            <X size={14} />
+          </button>
+        </div>
+      )}
+
+      <nav
+        ref={navRef}
+        className={`fixed ${
+          showBanner ? "top-[28px] sm:top-[32px]" : "top-0"
+        } left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-[#0a0f1a]/80 backdrop-blur-xl border-b border-white/5 shadow-lg shadow-black/20"
+            : "bg-transparent"
+        }`}
+        style={{ opacity: 0 }}
+      >
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -133,5 +157,6 @@ export function Navbar() {
         </div>
       </div>
     </nav>
+    </>
   );
 }
